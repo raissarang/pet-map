@@ -311,7 +311,7 @@ export default function PetNameMap() {
             Dwellsy pet-friendly listing data · Snapshot from our growing renter community
           </p>
           <p style={{ margin: "2px 0 0", fontSize: 11.5, color: "#aaa8c8" }}>
-            Last updated May 15, 2026
+            Last updated May 18, 2026
           </p>
         </div>
       </header>
