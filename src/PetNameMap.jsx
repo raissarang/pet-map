@@ -255,15 +255,15 @@ export default function PetNameMap() {
   }, [copyText]);
 
   const handleShareLink = useCallback(() => {
-    const url = "https://dwellsy.com/purrrmitted-living";
+    const url = "https://pet-name-map.vercel.app/";
     const ok = copyText(url);
-    setShareMsg(ok ? "✓ Link copied!" : "Link: dwellsy.com/purrrmitted-living");
+    setShareMsg(ok ? "✓ Link copied!" : "Link: https://pet-name-map.vercel.app/");
     setShareOpen(false);
     setTimeout(() => setShareMsg(""), 2500);
   }, [copyText]);
 
   const handleShareEmbed = useCallback((quote) => {
-    const embed = `<blockquote>"${quote}"<br>— <a href="https://dwellsy.com/purrrmitted-living">Dwellsy Purrrmitted Living</a></blockquote>`;
+    const embed = `<blockquote>"${quote}"<br>— <a href="https://pet-name-map.vercel.app/">Dwellsy Purrrmitted Living</a></blockquote>`;
     const ok = copyText(embed);
     setShareMsg(ok ? "✓ Embed code copied!" : "Could not copy embed");
     setShareOpen(false);
