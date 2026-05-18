@@ -255,15 +255,15 @@ export default function PetNameMap() {
   }, [copyText]);
 
   const handleShareLink = useCallback(() => {
-    const url = "https://pet-name-map.vercel.app/";
+    const url = "https://dwellsy.com/purrrmitted-living";
     const ok = copyText(url);
-    setShareMsg(ok ? "✓ Link copied!" : "Link: https://pet-name-map.vercel.app/");
+    setShareMsg(ok ? "✓ Link copied!" : "Link: dwellsy.com/purrrmitted-living");
     setShareOpen(false);
     setTimeout(() => setShareMsg(""), 2500);
   }, [copyText]);
 
   const handleShareEmbed = useCallback((quote) => {
-    const embed = `<blockquote>"${quote}"<br>— <a href="https://pet-name-map.vercel.app/">Dwellsy Purrrmitted Living</a></blockquote>`;
+    const embed = `<blockquote>"${quote}"<br>— <a href="https://dwellsy.com/purrrmitted-living">Dwellsy Purrrmitted Living</a></blockquote>`;
     const ok = copyText(embed);
     setShareMsg(ok ? "✓ Embed code copied!" : "Could not copy embed");
     setShareOpen(false);
@@ -295,9 +295,31 @@ export default function PetNameMap() {
       display: "flex", flexDirection: "column",
     }}>
       <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .pm-body { display: flex; flex: 1; padding: 16px 26px 22px; gap: 0; align-items: flex-start; }
+        .pm-map   { flex: 0 0 65%; position: relative; }
+        .pm-sidebar { flex: 0 0 35%; padding-left: 20px; display: flex; flex-direction: column; gap: 14px; }
+        .pm-all-states { max-height: 340px; overflow-y: auto; padding-right: 4px; }
+        @media (max-width: 900px) {
+          .pm-body    { flex-direction: column; padding: 12px 16px 20px; }
+          .pm-map     { flex: none; width: 100%; }
+          .pm-sidebar { flex: none; width: 100%; padding-left: 0; margin-top: 16px; }
+          .pm-all-states { max-height: 220px; }
+        }
+        @media (max-width: 600px) {
+          .pm-body { padding: 10px 12px 18px; }
+          .pm-header { padding: 14px 16px 12px !important; }
+          .pm-header h1 { font-size: 16px !important; }
+          .pm-header p  { font-size: 11px !important; }
+          .pm-toggle-bar { gap: 6px !important; }
+          .pm-toggle-btn { padding: 6px 12px !important; font-size: 12px !important; }
+          .pm-all-states { max-height: 180px; }
+        }
+      `}</style>
 
       {/* HEADER */}
-      <header style={{
+      <header className="pm-header" style={{
         padding: "22px 34px 14px", display: "flex", alignItems: "center", gap: 13,
         borderBottom: "1px solid rgba(76,195,247,0.16)",
       }}>
@@ -311,19 +333,19 @@ export default function PetNameMap() {
             Dwellsy pet-friendly listing data · Snapshot from our growing renter community
           </p>
           <p style={{ margin: "2px 0 0", fontSize: 11.5, color: "#aaa8c8" }}>
-            Last updated May 18, 2026
+            Last updated May 15, 2026
           </p>
         </div>
       </header>
 
       {/* BODY */}
-      <div style={{ display: "flex", flex: 1, padding: "16px 26px 22px", gap: 0, alignItems: "flex-start" }}>
+      <div className="pm-body">
 
         {/* MAP AREA */}
-        <div style={{ flex: "0 0 65%", position: "relative" }}>
+        <div className="pm-map">
 
           {/* TOGGLE */}
-          <div style={{ display:"flex", gap:8, marginBottom:12, flexWrap:"wrap" }}>
+          <div className="pm-toggle-bar" style={{ display:"flex", gap:8, marginBottom:12, flexWrap:"wrap" }}>
             {[
               { id:"names", label:"🐾 Pet Names" },
               { id:"cats",  label:"🐱 Most Cats" },
@@ -338,6 +360,7 @@ export default function PetNameMap() {
               return (
                 <button
                   key={id}
+                  className="pm-toggle-btn"
                   onClick={() => setMapMode(id)}
                   style={{
                     padding:"7px 16px", borderRadius:99, border:"none", cursor:"pointer",
@@ -366,8 +389,7 @@ export default function PetNameMap() {
           </div>
           {loading && (
             <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:420, gap:14 }}>
-              <div style={{ width:34, height:34, borderRadius:"50%", border:"3px solid #e0e0f0", borderTopColor:"#9b6fd6", animation:"spin 0.8s linear infinite" }} />
-              <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+            <div style={{ width:34, height:34, borderRadius:"50%", border:"3px solid #e0e0f0", borderTopColor:"#9b6fd6", animation:"spin 0.8s linear infinite" }} />
               <span style={{ color:"#9b8fba", fontSize:14 }}>Loading accurate map…</span>
             </div>
           )}
@@ -429,6 +451,7 @@ export default function PetNameMap() {
                 padding:"10px 13px",
                 boxShadow:"0 2px 12px rgba(34,32,74,0.08)",
                 marginTop:10,
+                maxWidth:"100%",
               }}>
                 <div style={{
                   fontSize:11, fontWeight:700, color:"#9b6fd6",
@@ -452,7 +475,7 @@ export default function PetNameMap() {
         </div>
 
         {/* SIDEBAR */}
-        <div style={{ flex:"0 0 35%", paddingLeft:20, display:"flex", flexDirection:"column", gap:14 }}>
+        <div className="pm-sidebar">
 
           {/* STATE DETAIL */}
           <div style={{ ...card, minHeight:130 }}>
@@ -755,7 +778,7 @@ export default function PetNameMap() {
           {/* ALL STATES DIRECTORY */}
           <div style={{ ...card, padding:"18px 20px" }}>
             <div style={cardLabel}>🗂️ All States</div>
-            <div style={{ maxHeight: 340, overflowY: "auto", paddingRight: 4 }}>
+            <div className="pm-all-states">
               {Object.keys(STATE_DATA)
                 .filter(abbr => STATE_NAMES[abbr])
                 .sort((a, b) => STATE_NAMES[a].localeCompare(STATE_NAMES[b]))
