@@ -292,41 +292,34 @@ export default function PetNameMap() {
               </div>
 
               {/* TOP 3 — sits below the map, bottom-left aligned */}
-              <div style={{
-                display:"inline-flex", flexDirection:"column",
-                background:"rgba(255,255,255,0.45)",
-                backdropFilter:"blur(10px)",
-                WebkitBackdropFilter:"blur(10px)",
-                borderRadius:12,
-                border:"1px solid rgba(255,255,255,0.6)",
-                padding:"10px 13px",
-                boxShadow:"0 2px 12px rgba(34,32,74,0.08)",
-                marginTop:10,
-                maxWidth:"100%",
-              }}>
-                <div style={{
-                  fontSize:11, fontWeight:700, color:"#9b6fd6",
-                  textTransform:"uppercase", letterSpacing:"0.9px", marginBottom:9,
-                }}>🏆 Top national names</div>
-                {TOP3.map((item, i) => (
-                  <div key={i} style={{
-                    display:"flex", alignItems:"center", gap:9,
-                    marginBottom: i < 2 ? 7 : 0,
-                  }}>
-                    <span style={{ fontSize:18 }}>{item.medal}</span>
-                    <span style={{
-                      fontFamily:"'Plus Jakarta Sans',sans-serif",
-                      fontWeight:700, fontSize:15, color:"#22204a",
-                    }}>{item.name}</span>
-                  </div>
-                ))}
-              </div>
             </>
           )}
         </div>
 
         {/* SIDEBAR */}
         <div className="pm-sidebar">
+
+          {/* TOP 3 */}
+          <div style={card}>
+            <div style={cardLabel}>🏆 Top National Names</div>
+            {[
+              "linear-gradient(120deg,#fff8e1,#fff3cd)",
+              "linear-gradient(120deg,#f5f5f5,#e8e8e8)",
+              "linear-gradient(120deg,#fbe9e7,#ffe0b2)",
+            ].map((bg, i) => (
+              <div key={i} style={{
+                display:"flex", alignItems:"center", gap:11,
+                padding:"10px 13px", borderRadius:12,
+                marginBottom: i < 2 ? 9 : 0, background: bg,
+              }}>
+                <span style={{ fontSize:20 }}>{TOP3[i].medal}</span>
+                <span style={{
+                  fontFamily:"'Plus Jakarta Sans',sans-serif",
+                  fontWeight:700, fontSize:16, color:"#22204a", flex:1,
+                }}>{TOP3[i].name}</span>
+              </div>
+            ))}
+          </div>
 
           {/* STATE DETAIL */}
           <div style={{ ...card, minHeight:130, overflow:"visible", position:"relative", zIndex:100 }}>
