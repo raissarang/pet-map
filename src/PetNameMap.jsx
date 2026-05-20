@@ -217,7 +217,7 @@ export default function PetNameMap() {
         borderBottom: "1px solid rgba(76,195,247,0.16)",
       }}>
         <span style={{ fontSize: 26 }}>🐾</span>
-        <div>
+        <div style={{ flex: 1 }}>
           <h1 style={{
             margin: 0, fontFamily: "'Plus Jakarta Sans',sans-serif",
             fontWeight: 800, fontSize: 20, color: "#22204a", letterSpacing: "-0.4px",
@@ -229,6 +229,26 @@ export default function PetNameMap() {
             Last updated May 20, 2026
           </p>
         </div>
+        <a
+          href="https://dwellsy.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 7,
+            padding: "10px 18px", borderRadius: 99,
+            background: "linear-gradient(135deg,#9b6fd6,#4fc3f7)",
+            color: "#fff", textDecoration: "none",
+            fontFamily: "'Plus Jakarta Sans',sans-serif",
+            fontWeight: 700, fontSize: 13,
+            boxShadow: "0 4px 14px rgba(155,111,214,0.35)",
+            whiteSpace: "nowrap",
+            transition: "opacity 0.18s",
+          }}
+          onMouseEnter={e => e.currentTarget.style.opacity = "0.88"}
+          onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+        >
+          🏠 Find pet-friendly rentals
+        </a>
       </header>
 
       {/* BODY */}
