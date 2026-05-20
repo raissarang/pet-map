@@ -66,6 +66,13 @@ function getStateColor(abbr) {
   return data ? (NAME_COLOR[data.name] || "#dce8f0") : "#dce8f0";
 }
 
+// States where every pet had a unique name (no duplicates)
+const UNIQUE_NAME_STATES = new Set([
+  'AK','AL','AZ','CO','CT','DC','DE','GA','IA','ID','IL','IN','KS','KY','LA',
+  'MA','MD','ME','MN','MS','MT','ND','NE','NH','NJ','NM','NV','OH','OR','PA',
+  'SC','SD','UT','VT','WA','WI','WY'
+]);
+
 // Small states that need too-small labels suppressed
 const SUPPRESS_LABEL = new Set(["DC","RI","DE","CT","NJ","MA","MD","VT","NH"]);
 
@@ -359,6 +366,20 @@ export default function PetNameMap() {
                     WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent",
                     backgroundClip:"text",
                   }}>{selData.name}</div>
+
+                  {UNIQUE_NAME_STATES.has(selected) && (
+                    <div style={{
+                      display:"flex", alignItems:"flex-start", gap:7,
+                      background:"rgba(255,179,71,0.1)",
+                      border:"1px solid rgba(255,179,71,0.3)",
+                      borderRadius:9, padding:"8px 11px", marginBottom:12,
+                    }}>
+                      <span style={{ fontSize:14, flexShrink:0 }}>✨</span>
+                      <span style={{ fontSize:12, color:"#22204a", lineHeight:1.5 }}>
+                        Every pet in this state had a unique name. This one was our favorite.
+                      </span>
+                    </div>
+                  )}
 
                   {/* Journalist quote */}
                   {(() => {
