@@ -237,7 +237,7 @@ export default function PetNameMap() {
           </p>
         </div>
         <a
-          href="https://dwellsy.com/?utm_source=referral&utm_medium=email&utm_campaign=petfriendly"
+          href="https://dwellsy.com/?utm_source=referral&utm_medium=email&utm_campaign=purrmittedliving"
           target="_blank"
           rel="noopener noreferrer"
           style={{
